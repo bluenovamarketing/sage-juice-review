@@ -569,6 +569,7 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .review-controls button { flex: 1 1 auto; }
   .signup-dialog__teaser { min-height: min(560px, calc(100dvh - 32px)); padding: 48px 24px; }
   .signup-dialog__teaser h2 { font-size: clamp(2.4rem, 10.5vw, 3.5rem); }
+  .signup-dialog__teaser .button { padding-inline: 16px; font-size: .64rem; letter-spacing: .11em; }
 }
 
 @media (max-width: 360px) {
@@ -579,7 +580,7 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .signup-dialog__teaser h2 { font-size: clamp(2.1rem, 11vw, 2.45rem); line-height: .96; }
   .signup-dialog__teaser .kicker { font-size: .58rem; letter-spacing: .18em; }
   .signup-dialog__teaser > p:not(.kicker) { margin: 22px 0 28px; font-size: .9rem; }
-  .signup-dialog__teaser .button { padding-inline: 18px; font-size: .66rem; letter-spacing: .13em; }
+  .signup-dialog__teaser .button { padding-inline: 14px; font-size: .62rem; letter-spacing: .1em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
