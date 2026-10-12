@@ -560,7 +560,11 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .footer__legal { display: grid; gap: 12px; }
   .motion-intro__logo { width: min(82vw, 430px); }
   .motion-intro__coming { margin-top: 34vw; }
-  .review-controls { left: 10px; right: 10px; bottom: 10px; max-width: none; }
+  .review-controls {
+    position: static;
+    max-width: none;
+    margin: 24px 16px;
+  }
   .review-controls > span { width: 100%; }
   .review-controls button { flex: 1 1 auto; }
   .signup-dialog__teaser { min-height: min(560px, calc(100dvh - 32px)); padding: 48px 24px; }
