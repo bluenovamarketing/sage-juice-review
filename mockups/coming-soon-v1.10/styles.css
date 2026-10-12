@@ -276,6 +276,7 @@ h1 { font-size: clamp(4.45rem, 9.6vw, 9.3rem); }
 .button--light { border-color: rgba(255,255,255,.7); background: rgba(17,18,14,.2); backdrop-filter: blur(8px); }
 .button:hover { background: var(--brass); border-color: var(--brass); color: var(--ink); }
 .button:focus-visible,
+button:focus-visible,
 a:focus-visible,
 input:focus-visible { outline: 3px solid #fff1bd; outline-offset: 4px; }
 .story {
@@ -548,6 +549,7 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .hero__content { padding: 140px 0 95px; }
   h1 { font-size: clamp(4rem, 20vw, 6rem); }
   .story { grid-template-columns: 1fr; }
+  .story > * { min-width: 0; }
   .section-number { display: none; }
   .story__copy { grid-column: 1; }
   .join { padding-inline: 22px; }
@@ -563,6 +565,17 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .review-controls button { flex: 1 1 auto; }
   .signup-dialog__teaser { min-height: min(560px, calc(100dvh - 32px)); padding: 48px 24px; }
   .signup-dialog__teaser h2 { font-size: clamp(2.8rem, 11vw, 3.5rem); }
+}
+
+@media (max-width: 360px) {
+  h1 { font-size: clamp(3.55rem, 18vw, 4rem); }
+  .story h2,
+  .join h2 { font-size: clamp(3.1rem, 17vw, 3.6rem); }
+  .signup-dialog__teaser { padding: 44px 16px; }
+  .signup-dialog__teaser h2 { font-size: clamp(2.1rem, 11vw, 2.45rem); line-height: .96; }
+  .signup-dialog__teaser .kicker { font-size: .58rem; letter-spacing: .18em; }
+  .signup-dialog__teaser > p:not(.kicker) { margin: 22px 0 28px; font-size: .9rem; }
+  .signup-dialog__teaser .button { padding-inline: 18px; font-size: .66rem; letter-spacing: .13em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
