@@ -568,7 +568,7 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .review-controls > span { width: 100%; }
   .review-controls button { flex: 1 1 auto; }
   .signup-dialog__teaser { min-height: min(560px, calc(100dvh - 32px)); padding: 48px 24px; }
-  .signup-dialog__teaser h2 { font-size: clamp(2.8rem, 11vw, 3.5rem); }
+  .signup-dialog__teaser h2 { font-size: clamp(2.4rem, 10.5vw, 3.5rem); }
 }
 
 @media (max-width: 360px) {
