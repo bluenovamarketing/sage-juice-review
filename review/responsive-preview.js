@@ -4,8 +4,6 @@ const previewLabel = document.querySelector("#preview-label");
 const deviceButtons = [...document.querySelectorAll("[data-device]")];
 const params = new URLSearchParams(window.location.search);
 const devices = new Set(["phone", "tablet"]);
-const themes = new Set(["storyboard", "midnight", "botanical", "stone"]);
-const theme = themes.has(params.get("theme")) ? params.get("theme") : "storyboard";
 
 function setDevice(device) {
   if (!devices.has(device)) return;
@@ -14,10 +12,9 @@ function setDevice(device) {
   deviceButtons.forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.device === device));
   });
-  deviceFrame.src = `../mockups/coming-soon-v1.7/?theme=${theme}&preview=device`;
+  deviceFrame.src = "../mockups/coming-soon-v1.8/?preview=device";
   const url = new URL(window.location.href);
   url.searchParams.set("device", device);
-  url.searchParams.set("theme", theme);
   window.history.replaceState({}, "", url);
 }
 
