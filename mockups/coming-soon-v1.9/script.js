@@ -56,10 +56,6 @@ signupOpeners.forEach((opener) => {
 
 revealSignup?.addEventListener("click", () => openSignup("form"));
 signupCloser?.addEventListener("click", () => signupDialog?.close());
-signupDialog?.addEventListener("cancel", (event) => {
-  if (signupDialog.dataset.view === "teaser") event.preventDefault();
-});
-
 signupForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const message = signupForm.querySelector(".form-message");
