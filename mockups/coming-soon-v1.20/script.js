@@ -8,7 +8,11 @@ const teaserPanel = document.querySelector('[data-dialog-panel="teaser"]');
 const formPanel = document.querySelector('[data-dialog-panel="form"]');
 const signupForm = document.querySelector("#dialog-signup-form");
 const ambientAudio = document.querySelector("#ambient-audio");
-if (ambientAudio) ambientAudio.volume = 0.18;
+if (ambientAudio) {
+  ambientAudio.volume = 0.58;
+  ambientAudio.muted = false;
+  ambientAudio.defaultMuted = false;
+}
 let motionStartedAt = 0;
 let ambientRetryArmed = false;
 
@@ -42,7 +46,7 @@ function runMotion() {
   if (signupDialog?.open) signupDialog.close();
   setDialogView("teaser");
   document.body.classList.remove("motion-complete");
-  intro.classList.remove("is-ready");
+  intro.classList.remove("is-preparing");
   intro.classList.remove("is-playing");
   void intro.offsetWidth;
   motionStartedAt = performance.now();
@@ -51,7 +55,8 @@ function runMotion() {
 
 async function playAmbientMusic({ fromGesture = false, alignToMotion = false } = {}) {
   if (!ambientAudio) return true;
-  ambientAudio.volume = 0.18;
+  ambientAudio.volume = 0.58;
+  ambientAudio.muted = false;
   if (alignToMotion && motionStartedAt) {
     ambientAudio.currentTime = Math.max(0, (performance.now() - motionStartedAt) / 1000);
   } else {

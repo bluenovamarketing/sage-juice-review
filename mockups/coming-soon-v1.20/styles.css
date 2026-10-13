@@ -120,7 +120,7 @@ a { color: inherit; }
   overflow: hidden;
   pointer-events: none;
 }
-.motion-intro:not(.is-playing):not(.is-ready) { visibility: hidden; opacity: 0; }
+.motion-intro:not(.is-playing):not(.is-preparing) { visibility: hidden; opacity: 0; }
 .motion-intro__scene { position: absolute; inset: -4%; }
 .motion-intro__wash { position: absolute; inset: 0; }
 .motion-intro__scene {
@@ -166,16 +166,12 @@ a { color: inherit; }
   text-transform: uppercase;
   opacity: 0;
 }
-.motion-intro.is-ready .motion-intro__scene {
-  opacity: .76;
-  filter: blur(6px) saturate(.86) contrast(.98);
-  transform: scale(1.08);
+.motion-intro.is-preparing .motion-intro__scene {
+  opacity: .84;
+  filter: blur(8px) saturate(.82);
+  transform: scale(1.08) translate3d(-.5%, -.25%, 0);
 }
-.motion-intro.is-ready .motion-intro__wash { opacity: .2; }
-.motion-intro.is-ready .motion-intro__logo--white {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(.94);
-}
+.motion-intro.is-preparing .motion-intro__wash { opacity: .12; }
 .motion-intro.is-playing { animation: intro-shell 10.8s linear both; }
 .motion-intro.is-playing .motion-intro__scene { animation: intro-scene 10.8s ease-in-out both; }
 .motion-intro.is-playing .motion-intro__wash { animation: intro-wash 10.8s ease-in-out both; }
