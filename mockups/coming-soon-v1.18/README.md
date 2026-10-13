@@ -1,8 +1,8 @@
-# Sage Juice Coming Soon Home v1.17
+# Sage Juice Coming Soon Home v1.18
 
 Status: Consolidated client-feedback revision in local QA. Not published to production and not client-approved.
 
-This revision preserves the verified v1.16 motion, popup, form, and one-screen layout while correcting the music and address presentation identified in Todd's follow-up review.
+This revision preserves the verified v1.17 motion, popup, form, one-screen layout, and address treatment while synchronizing a smoother ambient music bed with the opening motion.
 
 ## Included
 
@@ -26,7 +26,9 @@ This revision preserves the verified v1.16 motion, popup, form, and one-screen l
 - The public page is reduced to one hero; the light story and brown signup sections are removed.
 - The top-right navigation link is the only public CTA outside the popup.
 - The supplied Arts District address and Instagram, TikTok, and Facebook identities are placed in the hero footer.
-- An original 32-second ambient spa music loop is included as a real audio asset. Playback is attempted automatically and begins on the first visitor interaction when a browser blocks audible autoplay; there is no visible playback control.
+- The chime-accented demonstration is replaced with an original 40-second continuous ambient pad with no bell or chime events.
+- The ambient pad and 10.8-second opening motion start together. When browser policy blocks audible autoplay, the opening waits on a restrained **Enter the experience** state; that tap or click starts both sound and motion together.
+- Replaying the opening restarts both the ambient track and motion from the beginning; there is no separate visible audio control.
 - The supplied address remains in the hero footer with larger, brighter type and a dedicated rule so it is clearly visible on desktop, tablet, and phone.
 - The popup is fitted without an internal scrollbar at the target desktop, tablet, phone, and narrow-phone sizes.
 
@@ -45,6 +47,6 @@ This revision preserves the verified v1.16 motion, popup, form, and one-screen l
 - `../../assets/client-supplied/2026-10-10-logo-replacement/sage-juice-logo-transparent.png`
 - `../../assets/fonts/montage-serif.otf`
 - `../../assets/fonts/montage-serif.ttf`
-- `../../assets/audio/sage-ambient-spa-v1.wav`
+- `../../assets/audio/sage-ambient-spa-v2.wav`
 
 The full-word underline is a review treatment assembled non-destructively from the supplied transparent logo. The supplied master logo file itself was not overwritten.

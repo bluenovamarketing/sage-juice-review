@@ -8,7 +8,8 @@ const teaserPanel = document.querySelector('[data-dialog-panel="teaser"]');
 const formPanel = document.querySelector('[data-dialog-panel="form"]');
 const signupForm = document.querySelector("#dialog-signup-form");
 const ambientAudio = document.querySelector("#ambient-audio");
-if (ambientAudio) ambientAudio.volume = 0.22;
+const motionEntry = document.querySelector("#motion-entry");
+if (ambientAudio) ambientAudio.volume = 0.18;
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("preview") === "device") {
@@ -35,17 +36,49 @@ function openSignup(view = "teaser") {
   }
 }
 
-function replayMotion() {
+function runMotion() {
   if (!intro) return;
   if (signupDialog?.open) signupDialog.close();
   setDialogView("teaser");
   document.body.classList.remove("motion-complete");
+  intro.classList.remove("is-awaiting");
   intro.classList.remove("is-playing");
   void intro.offsetWidth;
   intro.classList.add("is-playing");
 }
 
-replay?.addEventListener("click", replayMotion);
+async function playAmbientMusic({ fromGesture = false } = {}) {
+  if (!ambientAudio) return true;
+  ambientAudio.volume = 0.18;
+  ambientAudio.currentTime = 0;
+  if (urlParams.get("qa") === "autoplay-blocked" && !fromGesture) {
+    throw new Error("Simulated browser autoplay block");
+  }
+  await ambientAudio.play();
+  return true;
+}
+
+function showEntryGate() {
+  if (!intro) return;
+  intro.classList.remove("is-playing");
+  intro.classList.add("is-awaiting");
+  if (motionEntry) motionEntry.hidden = false;
+}
+
+async function beginExperience({ fromGesture = false } = {}) {
+  try {
+    await playAmbientMusic({ fromGesture });
+  } catch {
+    showEntryGate();
+    return false;
+  }
+  if (motionEntry) motionEntry.hidden = true;
+  runMotion();
+  return true;
+}
+
+replay?.addEventListener("click", () => beginExperience({ fromGesture: true }));
+motionEntry?.addEventListener("click", () => beginExperience({ fromGesture: true }));
 intro?.addEventListener("animationend", (event) => {
   if (event.target !== intro || event.animationName !== "intro-shell") return;
   openSignup("teaser");
@@ -84,27 +117,6 @@ signupForm?.addEventListener("submit", (event) => {
   }, 800);
 });
 
-async function startAmbientMusic() {
-  if (!ambientAudio) return;
-  ambientAudio.volume = 0.22;
-  if (!ambientAudio.paused) return;
-  try {
-    await ambientAudio.play();
-  } catch {
-    // Audible autoplay is blocked in some browsers. The first visitor gesture retries playback.
-  }
-}
-
-function startAmbientMusicFromGesture() {
-  startAmbientMusic();
-  window.removeEventListener("pointerdown", startAmbientMusicFromGesture, true);
-  window.removeEventListener("keydown", startAmbientMusicFromGesture, true);
-  window.removeEventListener("touchstart", startAmbientMusicFromGesture, true);
-}
-
-window.addEventListener("load", startAmbientMusic);
-window.addEventListener("pointerdown", startAmbientMusicFromGesture, true);
-window.addEventListener("keydown", startAmbientMusicFromGesture, true);
-window.addEventListener("touchstart", startAmbientMusicFromGesture, true);
+window.addEventListener("load", () => beginExperience());
 
 setDialogView("teaser");
