@@ -12,7 +12,7 @@ function setDevice(device) {
   deviceButtons.forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.device === device));
   });
-  deviceFrame.src = "../mockups/coming-soon-v1.9/?preview=device&v=restored-20261013";
+  deviceFrame.src = "../mockups/coming-soon-v1.14/?preview=device&v=1.14.3";
   const url = new URL(window.location.href);
   url.searchParams.set("device", device);
   window.history.replaceState({}, "", url);
