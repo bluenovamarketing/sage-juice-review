@@ -31,7 +31,7 @@ main { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
 .intro { display: grid; grid-template-columns: 1fr minmax(320px,.62fr); column-gap: 72px; padding: clamp(88px,10vw,150px) 0 74px; }
 .intro > * { min-width: 0; }
 .eyebrow { grid-column: 1 / -1; margin: 0 0 18px; color: var(--sage-text); font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
-h1 { margin: 0; font: 400 clamp(3.2rem,5.2vw,5.8rem)/.92 var(--display); letter-spacing: -.045em; }
+h1 { margin: 0; font: 400 clamp(3rem,4.4vw,5.2rem)/.92 var(--display); letter-spacing: -.045em; }
 h1 span { display: block; white-space: nowrap; }
 .lede { align-self: end; max-width: 520px; margin: 0 0 10px; color: #4e4d44; font-size: clamp(1rem,1.5vw,1.22rem); }
 .reviews { border-top: 1px solid rgba(36,38,29,.18); }
