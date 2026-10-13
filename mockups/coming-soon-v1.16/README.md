@@ -1,8 +1,8 @@
-# Sage Juice Coming Soon Home v1.12
+# Sage Juice Coming Soon Home v1.16
 
 Status: Consolidated client-feedback revision in local QA. Not published to production and not client-approved.
 
-This revision preserves v1.10 and completes a second client-facing QA cleanup.
+This revision preserves the verified v1.15 motion and form baseline and implements Krystal's October 13 simplification request.
 
 ## Included
 
@@ -10,16 +10,24 @@ This revision preserves v1.10 and completes a second client-facing QA cleanup.
 - The client-supplied Montage Serif for display typography, with Manrope retained for practical supporting copy.
 - The proposed full-word underline treatment throughout this landing-page study.
 - The existing approximately eleven-second cinematic opening and continuing background drift.
-- An automatic centered **Something fresh is coming** prompt immediately after the opening motion.
+- An automatic centered **Something fresh is coming** prompt immediately after the opening motion, without flashing the settled hero first.
 - A click-through popup form requesting name, email, and mobile number on desktop, tablet, and phone.
 - The approved product line beneath the form: **Cold-pressed juice · Açaí · Wellness shots · Smoothies**.
 - Mockup-only submission behavior that closes the popup and returns the visitor to the landing page. No information is stored or transmitted.
-- Local-only controls to replay the opening or reopen the popup; these controls move into normal page flow on phone widths and remain hidden in the dedicated device preview so they never cover the design.
+- Local-only controls to replay the opening or reopen the popup; these controls are hidden in the dedicated device preview.
 - The opening logo remains vertically and horizontally centered throughout the motion, and the atmospheric interior remains visible instead of resolving to a near-solid beige frame.
 - The popup teaser has a visible close button and supports normal Escape-key dismissal.
 - The unrequested `Cold-pressed juice / Opening 01 · 01 · 27` hero strip has been removed.
-- Visitors who prefer reduced motion skip the cinematic sequence, see the settled landing page immediately, and still receive the automatic signup prompt; the replay control remains an explicit motion opt-in.
-- The internal mockup-only storage/transmission disclaimer has been removed from the visible client presentation.
+- Client-facing display headings omit decorative ending periods and use balanced responsive wrapping.
+- Section 01 now reads as the natural phrase **Quiet luxury meets fresh energy** instead of a four-word display block across desktop, tablet, and phone.
+- The popup action reads **Be the first to know**, centered with no decorative arrow.
+- The phone popup uses a compact mobile presentation rather than the desktop scale.
+- Name, Email Address, and Mobile Number are visibly marked and functionally enforced as required in this client-requested mockup flow.
+- The public page is reduced to one hero; the light story and brown signup sections are removed.
+- The top-right navigation link is the only public CTA outside the popup.
+- The supplied Arts District address and Instagram, TikTok, and Facebook identities are placed in the hero footer.
+- A visitor-controlled ambient sound demonstration is included without relying on blocked audible autoplay.
+- The popup is fitted without an internal scrollbar at the target desktop, tablet, phone, and narrow-phone sizes.
 
 ## Palette
 
