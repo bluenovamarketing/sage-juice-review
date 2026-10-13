@@ -7,9 +7,8 @@ const revealSignup = document.querySelector("[data-reveal-signup]");
 const teaserPanel = document.querySelector('[data-dialog-panel="teaser"]');
 const formPanel = document.querySelector('[data-dialog-panel="form"]');
 const signupForm = document.querySelector("#dialog-signup-form");
-const soundToggle = document.querySelector("#sound-toggle");
-const soundLabel = soundToggle?.querySelector("[data-sound-label]");
-let ambientAudio = null;
+const ambientAudio = document.querySelector("#ambient-audio");
+if (ambientAudio) ambientAudio.volume = 0.22;
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("preview") === "device") {
@@ -85,60 +84,27 @@ signupForm?.addEventListener("submit", (event) => {
   }, 800);
 });
 
-function createAmbientAudio() {
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) return null;
-
-  const context = new AudioContextClass();
-  const master = context.createGain();
-  const filter = context.createBiquadFilter();
-  const lfo = context.createOscillator();
-  const lfoDepth = context.createGain();
-  const voices = [174.61, 261.63, 349.23].map((frequency, index) => {
-    const oscillator = context.createOscillator();
-    const gain = context.createGain();
-    oscillator.type = index === 0 ? "sine" : "triangle";
-    oscillator.frequency.value = frequency;
-    oscillator.detune.value = index * 3 - 3;
-    gain.gain.value = index === 0 ? 0.12 : 0.045;
-    oscillator.connect(gain).connect(filter);
-    oscillator.start();
-    return oscillator;
-  });
-
-  filter.type = "lowpass";
-  filter.frequency.value = 720;
-  filter.Q.value = 0.45;
-  master.gain.value = 0;
-  lfo.type = "sine";
-  lfo.frequency.value = 0.075;
-  lfoDepth.gain.value = 80;
-  lfo.connect(lfoDepth).connect(filter.frequency);
-  lfo.start();
-  filter.connect(master).connect(context.destination);
-
-  return { context, master, voices, lfo };
-}
-
-async function toggleAmbientSound() {
-  if (!soundToggle) return;
-  if (!ambientAudio) ambientAudio = createAmbientAudio();
-  if (!ambientAudio) {
-    soundLabel.textContent = "Sound unavailable";
-    soundToggle.disabled = true;
-    return;
+async function startAmbientMusic() {
+  if (!ambientAudio) return;
+  ambientAudio.volume = 0.22;
+  if (!ambientAudio.paused) return;
+  try {
+    await ambientAudio.play();
+  } catch {
+    // Audible autoplay is blocked in some browsers. The first visitor gesture retries playback.
   }
-
-  const isOn = soundToggle.getAttribute("aria-pressed") === "true";
-  if (ambientAudio.context.state === "suspended") await ambientAudio.context.resume();
-  const now = ambientAudio.context.currentTime;
-  ambientAudio.master.gain.cancelScheduledValues(now);
-  ambientAudio.master.gain.setValueAtTime(ambientAudio.master.gain.value, now);
-  ambientAudio.master.gain.linearRampToValueAtTime(isOn ? 0 : 0.055, now + 1.2);
-  soundToggle.setAttribute("aria-pressed", String(!isOn));
-  soundLabel.textContent = isOn ? "Play ambience" : "Pause ambience";
 }
 
-soundToggle?.addEventListener("click", toggleAmbientSound);
+function startAmbientMusicFromGesture() {
+  startAmbientMusic();
+  window.removeEventListener("pointerdown", startAmbientMusicFromGesture, true);
+  window.removeEventListener("keydown", startAmbientMusicFromGesture, true);
+  window.removeEventListener("touchstart", startAmbientMusicFromGesture, true);
+}
+
+window.addEventListener("load", startAmbientMusic);
+window.addEventListener("pointerdown", startAmbientMusicFromGesture, true);
+window.addEventListener("keydown", startAmbientMusicFromGesture, true);
+window.addEventListener("touchstart", startAmbientMusicFromGesture, true);
 
 setDialogView("teaser");
