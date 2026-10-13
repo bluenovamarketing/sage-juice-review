@@ -7,6 +7,7 @@ const revealSignup = document.querySelector("[data-reveal-signup]");
 const teaserPanel = document.querySelector('[data-dialog-panel="teaser"]');
 const formPanel = document.querySelector('[data-dialog-panel="form"]');
 const signupForm = document.querySelector("#dialog-signup-form");
+let autoSignupTimer = null;
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("preview") === "device") {
@@ -33,8 +34,15 @@ function openSignup(view = "teaser") {
   }
 }
 
+function clearAutoSignupTimer() {
+  if (autoSignupTimer === null) return;
+  window.clearTimeout(autoSignupTimer);
+  autoSignupTimer = null;
+}
+
 function replayMotion() {
   if (!intro) return;
+  clearAutoSignupTimer();
   if (signupDialog?.open) signupDialog.close();
   setDialogView("teaser");
   document.body.classList.remove("motion-complete");
@@ -48,12 +56,17 @@ intro?.addEventListener("animationend", (event) => {
   if (event.target !== intro || event.animationName !== "intro-shell") return;
   intro.classList.remove("is-playing");
   document.body.classList.add("motion-complete");
-  window.setTimeout(() => openSignup("teaser"), 1850);
+  clearAutoSignupTimer();
+  autoSignupTimer = window.setTimeout(() => {
+    autoSignupTimer = null;
+    openSignup("teaser");
+  }, 1850);
 });
 
 signupOpeners.forEach((opener) => {
   opener.addEventListener("click", (event) => {
     event.preventDefault();
+    clearAutoSignupTimer();
     openSignup(opener.dataset.openMode === "teaser" ? "teaser" : "form");
   });
 });
