@@ -8,8 +8,9 @@ const teaserPanel = document.querySelector('[data-dialog-panel="teaser"]');
 const formPanel = document.querySelector('[data-dialog-panel="form"]');
 const signupForm = document.querySelector("#dialog-signup-form");
 const ambientAudio = document.querySelector("#ambient-audio");
-const motionEntry = document.querySelector("#motion-entry");
 if (ambientAudio) ambientAudio.volume = 0.18;
+let motionStartedAt = 0;
+let ambientRetryArmed = false;
 
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("preview") === "device") {
@@ -41,16 +42,21 @@ function runMotion() {
   if (signupDialog?.open) signupDialog.close();
   setDialogView("teaser");
   document.body.classList.remove("motion-complete");
-  intro.classList.remove("is-awaiting");
+  intro.classList.remove("is-ready");
   intro.classList.remove("is-playing");
   void intro.offsetWidth;
+  motionStartedAt = performance.now();
   intro.classList.add("is-playing");
 }
 
-async function playAmbientMusic({ fromGesture = false } = {}) {
+async function playAmbientMusic({ fromGesture = false, alignToMotion = false } = {}) {
   if (!ambientAudio) return true;
   ambientAudio.volume = 0.18;
-  ambientAudio.currentTime = 0;
+  if (alignToMotion && motionStartedAt) {
+    ambientAudio.currentTime = Math.max(0, (performance.now() - motionStartedAt) / 1000);
+  } else {
+    ambientAudio.currentTime = 0;
+  }
   if (urlParams.get("qa") === "autoplay-blocked" && !fromGesture) {
     throw new Error("Simulated browser autoplay block");
   }
@@ -58,27 +64,40 @@ async function playAmbientMusic({ fromGesture = false } = {}) {
   return true;
 }
 
-function showEntryGate() {
-  if (!intro) return;
-  intro.classList.remove("is-playing");
-  intro.classList.add("is-awaiting");
-  if (motionEntry) motionEntry.hidden = false;
+const ambientRetryEvents = ["pointerdown", "touchstart", "keydown"];
+
+function removeAmbientRetry() {
+  ambientRetryEvents.forEach((eventName) => window.removeEventListener(eventName, retryAmbientOnInteraction));
+  ambientRetryArmed = false;
+}
+
+async function retryAmbientOnInteraction() {
+  try {
+    await playAmbientMusic({ fromGesture: true, alignToMotion: true });
+    removeAmbientRetry();
+  } catch {
+    // Keep the landing experience unobstructed; another normal interaction can retry.
+  }
+}
+
+function armAmbientRetry() {
+  if (ambientRetryArmed) return;
+  ambientRetryArmed = true;
+  ambientRetryEvents.forEach((eventName) => window.addEventListener(eventName, retryAmbientOnInteraction, { passive: true }));
 }
 
 async function beginExperience({ fromGesture = false } = {}) {
+  runMotion();
   try {
     await playAmbientMusic({ fromGesture });
+    removeAmbientRetry();
   } catch {
-    showEntryGate();
-    return false;
+    armAmbientRetry();
   }
-  if (motionEntry) motionEntry.hidden = true;
-  runMotion();
   return true;
 }
 
 replay?.addEventListener("click", () => beginExperience({ fromGesture: true }));
-motionEntry?.addEventListener("click", () => beginExperience({ fromGesture: true }));
 intro?.addEventListener("animationend", (event) => {
   if (event.target !== intro || event.animationName !== "intro-shell") return;
   openSignup("teaser");

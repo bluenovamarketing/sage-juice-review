@@ -1,8 +1,8 @@
-# Sage Juice Coming Soon Home v1.18
+# Sage Juice Coming Soon Home v1.19
 
 Status: Consolidated client-feedback revision in local QA. Not published to production and not client-approved.
 
-This revision preserves the verified v1.17 motion, popup, form, one-screen layout, and address treatment while synchronizing a smoother ambient music bed with the opening motion.
+This revision preserves the verified v1.18 motion, popup, form, one-screen layout, address treatment, and smooth ambient music while removing the visible sound-entry gate.
 
 ## Included
 
@@ -27,7 +27,8 @@ This revision preserves the verified v1.17 motion, popup, form, one-screen layou
 - The top-right navigation link is the only public CTA outside the popup.
 - The supplied Arts District address and Instagram, TikTok, and Facebook identities are placed in the hero footer.
 - The chime-accented demonstration is replaced with an original 40-second continuous ambient pad with no bell or chime events.
-- The ambient pad and 10.8-second opening motion start together. When browser policy blocks audible autoplay, the opening waits on a restrained **Enter the experience** state; that tap or click starts both sound and motion together.
+- The ambient pad and 10.8-second opening motion are requested together automatically, with no visible sound-entry gate or audio button.
+- If a browser blocks audible autoplay, the motion continues unobstructed and the soundtrack retries invisibly on the visitor's first normal tap, click, or key press, aligned to the motion's current point.
 - Replaying the opening restarts both the ambient track and motion from the beginning; there is no separate visible audio control.
 - The supplied address remains in the hero footer with larger, brighter type and a dedicated rule so it is clearly visible on desktop, tablet, and phone.
 - The popup is fitted without an internal scrollbar at the target desktop, tablet, phone, and narrow-phone sizes.
