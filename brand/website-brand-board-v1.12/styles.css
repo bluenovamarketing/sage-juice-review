@@ -8,15 +8,15 @@
 }
 
 :root {
-  --espresso: #2e241d;
-  --umber: #5b4030;
-  --stone: #c7aa8e;
-  --sand: #e1d2c0;
-  --ivory: #f8f1e8;
-  --sage: #7b8062;
-  --bronze: #7b8062;
-  --champagne: #e1d2c0;
-  --ink: #2e241d;
+  --espresso: #402b16;
+  --umber: #9e653e;
+  --stone: #c39171;
+  --sand: #e2c9b3;
+  --ivory: #fbf0e3;
+  --sage: #8f9d7e;
+  --bronze: #9e653e;
+  --champagne: #e2c9b3;
+  --ink: #402b16;
   --paper: #fffaf4;
   --gutter: max(36px, calc((100vw - 1320px) / 2));
   --display: "Montage Serif", Georgia, serif;
@@ -74,8 +74,9 @@ h2 { font-size: clamp(3.1rem, 5.3vw, 6rem); }
 .logo-card--espresso { background: var(--espresso); color: var(--ivory); }
 .logo-card--espresso img { filter: brightness(0) invert(1); }
 .logo-card--ivory { border: 1px solid rgba(64,43,22,.18); background: var(--paper); }
-.logo-card--sage { background: var(--sage); color: var(--ivory); }
-.logo-card--sage img { filter: brightness(0) invert(1); }
+.logo-card--sage { background: var(--champagne); color: var(--ink); }
+.logo-card--sage .logo-lockup { color: var(--sage); }
+.logo-card--sage img { filter: none; }
 .logo-card--atmosphere { position: relative; background: var(--umber); color: var(--ivory); }
 .logo-card--atmosphere::before { content: ""; position: absolute; inset: -8%; background: linear-gradient(rgba(64,43,22,.46),rgba(64,43,22,.58)), url("../../assets/client-supplied/2026-10-09-landing-page-reference/interior-reference.png") center / cover; filter: blur(12px) saturate(.7); }
 .logo-card--atmosphere .logo-lockup, .logo-card--atmosphere figcaption { position: relative; z-index: 1; }
@@ -109,7 +110,7 @@ h2 { font-size: clamp(3.1rem, 5.3vw, 6rem); }
 .standards-grid p { margin: 14px 0 0; color: #645246; }
 
 .palette { width: auto; margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); padding-inline: var(--gutter); background: var(--paper); }
-.palette-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.palette-comparison { display: grid; grid-template-columns: 1fr; gap: 22px; }
 .palette-route { overflow: hidden; border: 1px solid rgba(64,43,22,.18); background: var(--ivory); }
 .palette-route__head { min-height: 210px; padding: clamp(26px,3.5vw,46px); }
 .palette-route__head h3 { margin: 0; font: 400 clamp(2rem,3.4vw,3.8rem)/.98 var(--display); letter-spacing: -.025em; }
