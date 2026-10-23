@@ -9,7 +9,7 @@ const formPanel = document.querySelector('[data-dialog-panel="form"]');
 const signupForm = document.querySelector("#dialog-signup-form");
 const ambientAudio = document.querySelector("#ambient-audio");
 if (ambientAudio) {
-  ambientAudio.volume = 1;
+  ambientAudio.volume = 0.75;
   ambientAudio.muted = false;
   ambientAudio.defaultMuted = false;
 }
@@ -55,7 +55,7 @@ function runMotion() {
 
 async function playAmbientMusic({ fromGesture = false, alignToMotion = false } = {}) {
   if (!ambientAudio) return true;
-  ambientAudio.volume = 1;
+  ambientAudio.volume = 0.75;
   ambientAudio.muted = false;
   if (alignToMotion && motionStartedAt) {
     ambientAudio.currentTime = Math.max(0, (performance.now() - motionStartedAt) / 1000);

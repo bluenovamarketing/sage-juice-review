@@ -1,8 +1,8 @@
-# Sage Juice Coming Soon Home v1.21
+# Sage Juice Coming Soon Home v1.22
 
 Status: Lyle-approved revision prepared for the public review/staging route. Not published to production.
 
-This revision preserves the verified v1.20 layout, motion, popup, form, social links, and one-screen direction while applying Lyle's final copy, the approved Champagne + Botanical Sage palette, and sound behavior option 2 with the option-2 ambient asset.
+This revision preserves the verified v1.21 copy, palette, layout, motion, popup, form, social links, and one-screen direction. The only client-facing change is a new, more lively but still relaxing background track, following Todd's direct feedback on October 23, 2026.
 
 ## Included
 
@@ -26,7 +26,7 @@ This revision preserves the verified v1.20 layout, motion, popup, form, social l
 - The public page is reduced to one hero; the light story and brown signup sections are removed.
 - The top-right navigation link is the only public CTA outside the popup.
 - The supplied Arts District address and Instagram, TikTok, and Facebook identities are placed in the hero footer.
-- The page uses the original 40-second option-2 ambient asset with no bell or chime events.
+- The page uses an original 48-second, 80 BPM major-key loop with gentle wooden plucks, warm bass, a brushed pulse, and a subtle twelve-second rise and fall. It contains no bell or chime events.
 - The audio element requests autoplay as soon as the document begins parsing, and the script requests it again with the opening motion; it loops continuously through the popup and settled landing page until the visitor mutes the browser or device.
 - Before the page finishes loading, the visitor sees only the atmospheric background; the logo remains hidden. The opening then starts from its true first frame instead of exposing a complete static logo before the animation.
 - There is no visible sound-entry gate or page-level audio button. If a browser applies its own audible-autoplay policy, the soundtrack retries invisibly on the visitor's first normal tap, click, or key press, aligned to the motion's current point.
@@ -47,6 +47,6 @@ This revision preserves the verified v1.20 layout, motion, popup, form, social l
 - `../../assets/client-supplied/2026-10-10-logo-replacement/sage-juice-logo-transparent.png`
 - `../../assets/fonts/montage-serif.otf`
 - `../../assets/fonts/montage-serif.ttf`
-- `../../assets/audio/sage-ambient-spa-v2.wav`
+- `../../assets/audio/sage-gentle-tempo-v4.wav`
 
 The full-word underline is a review treatment assembled non-destructively from the supplied transparent logo. The supplied master logo file itself was not overwritten.
