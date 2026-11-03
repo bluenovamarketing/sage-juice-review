@@ -1,8 +1,8 @@
-# Sage Juice Coming Soon Home v1.22
+# Sage Juice Coming Soon Home v1.23
 
-Status: Lyle-approved revision prepared for the public review/staging route. Not published to production.
+Status: Client-requested revision prepared for internal QA and the public review/staging route. Not published to production.
 
-This revision preserves the verified v1.21 copy, palette, layout, motion, popup, form, social links, and one-screen direction. The only client-facing change is a new, more lively but still relaxing background track, following Todd's direct feedback on October 23, 2026.
+This revision preserves the verified v1.22 one-screen layout, opening motion, approved core copy, social links, address, and form behavior while implementing Lyle's November 2, 2026 requests: a Champagne and Botanical Sage popup, accessible asterisk required markers, removal of the bottom helper/error sentence, the supplied royalty-free MP3, and a centered `Opening January 2027` line without `Las Vegas Arts District` directly beneath the body copy.
 
 ## Included
 
@@ -22,11 +22,13 @@ This revision preserves the verified v1.21 copy, palette, layout, motion, popup,
 - The hero uses Lyle's final approved heading and body copy, including the January 2027 opening line.
 - The popup action reads **Be the first to know**, centered with no decorative arrow.
 - The phone popup uses a compact mobile presentation rather than the desktop scale.
-- Name, Email Address, and Mobile Number are visibly marked and functionally enforced as required in this client-requested mockup flow.
+- Name, Email Address, and Mobile Number use visible asterisks with screen-reader-only `required` text. Native HTML required/type validation, label association, focus behavior, and browser-accessible error presentation remain intact.
 - The public page is reduced to one hero; the light story and brown signup sections are removed.
 - The top-right navigation link is the only public CTA outside the popup.
 - The supplied Arts District address and Instagram, TikTok, and Facebook identities are placed in the hero footer.
-- The page uses an original 48-second, 80 BPM major-key loop with gentle wooden plucks, warm bass, a brushed pulse, and a subtle twelve-second rise and fall. It contains no bell or chime events.
+- The popup uses Champagne as the primary surface with Botanical Sage controls and Espresso text for accessible contrast.
+- The opening line is centered beneath the body copy; the duplicate `Las Vegas Arts District` line was removed from that position while the location kicker and address label remain.
+- The page uses the client-supplied `monume-lofi-beats-603960.mp3`, represented by the client as royalty-free.
 - The audio element requests autoplay as soon as the document begins parsing, and the script requests it again with the opening motion; it loops continuously through the popup and settled landing page until the visitor mutes the browser or device.
 - Before the page finishes loading, the visitor sees only the atmospheric background; the logo remains hidden. The opening then starts from its true first frame instead of exposing a complete static logo before the animation.
 - There is no visible sound-entry gate or page-level audio button. If a browser applies its own audible-autoplay policy, the soundtrack retries invisibly on the visitor's first normal tap, click, or key press, aligned to the motion's current point.
@@ -47,6 +49,6 @@ This revision preserves the verified v1.21 copy, palette, layout, motion, popup,
 - `../../assets/client-supplied/2026-10-10-logo-replacement/sage-juice-logo-transparent.png`
 - `../../assets/fonts/montage-serif.otf`
 - `../../assets/fonts/montage-serif.ttf`
-- `../../assets/audio/sage-gentle-tempo-v4.wav`
+- `../../assets/client-supplied/2026-11-02-client-feedback/monume-lofi-beats-603960.mp3`
 
 The full-word underline is a review treatment assembled non-destructively from the supplied transparent logo. The supplied master logo file itself was not overwritten.

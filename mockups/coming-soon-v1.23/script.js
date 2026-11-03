@@ -122,13 +122,8 @@ signupCloser?.addEventListener("click", () => signupDialog?.close());
 signupForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const message = signupForm.querySelector(".form-message");
-  const data = new FormData(signupForm);
-  const name = String(data.get("name") || "").trim();
-  const email = String(data.get("email") || "").trim();
-  const phone = String(data.get("phone") || "").trim();
-
-  if (!name || !email || !email.includes("@") || !phone) {
-    message.textContent = "Please enter your name, a valid email address, and your mobile number.";
+  if (!signupForm.checkValidity()) {
+    signupForm.reportValidity();
     return;
   }
 
