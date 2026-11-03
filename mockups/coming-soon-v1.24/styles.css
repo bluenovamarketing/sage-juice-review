@@ -277,7 +277,7 @@ h1 { max-width: 980px; font-size: clamp(3.5rem, 7.5vw, 7.4rem); }
 .hero__opening strong { width: 100%; font-weight: 600; }
 .hero__footer {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 36px;
   width: min(1320px, calc(100% - 72px));
@@ -290,6 +290,7 @@ h1 { max-width: 980px; font-size: clamp(3.5rem, 7.5vw, 7.4rem); }
   flex-wrap: wrap;
   align-items: center;
   gap: 14px 24px;
+  padding-top: 2px;
 }
 .hero__socials a {
   border: 0;
@@ -306,8 +307,7 @@ h1 { max-width: 980px; font-size: clamp(3.5rem, 7.5vw, 7.4rem); }
   display: grid;
   gap: 4px;
   min-width: 280px;
-  padding: 12px 0 2px 22px;
-  border-left: 1px solid rgba(196, 161, 119, .7);
+  padding: 0 0 2px;
   color: rgba(255,253,248,.92);
   font-size: .75rem;
   font-weight: 600;
@@ -640,8 +640,8 @@ input:focus { border-bottom-color: var(--brass); outline: none; }
   .motion-intro__logo { width: min(82vw, 430px); }
   .motion-intro__coming { margin-top: 34vw; }
   .hero__footer { flex-direction: column-reverse; align-items: center; gap: 22px; padding-bottom: 28px; text-align: center; }
-  .hero__socials { justify-content: center; }
-  .hero__address { min-width: 0; padding: 12px 0 0; border-top: 1px solid rgba(196, 161, 119, .7); border-left: 0; text-align: center; }
+  .hero__socials { justify-content: center; padding-top: 0; }
+  .hero__address { min-width: 0; padding: 0; border: 0; text-align: center; }
   .review-controls { position: static; max-width: none; }
   .review-controls > span { width: 100%; }
   .review-controls button { flex: 1 1 auto; }

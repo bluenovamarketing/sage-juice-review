@@ -1,8 +1,10 @@
-# Sage Juice Coming Soon Home v1.23
+# Sage Juice Coming Soon Home v1.24
 
 Status: Client-requested revision prepared for internal QA and the public review/staging route. Not published to production.
 
 This revision preserves the verified v1.22 one-screen layout, opening motion, approved core copy, social links, address, and form behavior while implementing Lyle's November 2, 2026 requests: a Champagne and Botanical Sage popup, accessible asterisk required markers, removal of the bottom helper/error sentence, the supplied royalty-free MP3, and a centered `Opening January 2027` line without `Las Vegas Arts District` directly beneath the body copy.
+
+It also implements Todd's November 3 visual review corrections: remove the stray divider beside/above the footer address and align the social-link row with the address heading on desktop and tablet.
 
 ## Included
 
@@ -33,7 +35,7 @@ This revision preserves the verified v1.22 one-screen layout, opening motion, ap
 - Before the page finishes loading, the visitor sees only the atmospheric background; the logo remains hidden. The opening then starts from its true first frame instead of exposing a complete static logo before the animation.
 - There is no visible sound-entry gate or page-level audio button. If a browser applies its own audible-autoplay policy, the soundtrack retries invisibly on the visitor's first normal tap, click, or key press, aligned to the motion's current point.
 - Replaying the opening restarts both the ambient track and motion from the beginning; there is no separate visible audio control.
-- The supplied address remains in the hero footer with larger, brighter type and a dedicated rule so it is clearly visible on desktop, tablet, and phone.
+- The supplied address remains in the hero footer with larger, brighter type and no stray divider; the social links align with its heading on desktop and tablet.
 - The popup is fitted without an internal scrollbar at the target desktop, tablet, phone, and narrow-phone sizes.
 
 ## Palette
